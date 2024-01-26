@@ -1,23 +1,28 @@
+from dataclasses import dataclass
 import random
 
 
+def create_empty_grid():
+    pass
+
+
+@dataclass
 class Turn:
-    def __init__(self, row: int, col: int, weapon: str):
-        self.row = row
-        self.col = col
-        self.weapon = weapon
+    row: int
+    col: int
+    weapon: str
+
 
 class Board:
     nought = 'O'
     cross = 'X'
-    grid = None
 
-    def __init__(self):
+    def __init__(self) -> None:
         print('Welcome!')
         self.user_weapon = random.choice([self.cross, self.nought])
         self.rival_weapon = self.cross if self.user_weapon == self.nought else self.nought
 
-        self.grid = grid = [
+        self.grid = [
             [None, None, None],
             [None, None, None],
             [None, None, None]

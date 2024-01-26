@@ -1,1 +1,8 @@
 mypy==1.8.0
+pytest==
+flake8==
+flake8-unused-arguments
+flake8-quotes
+flake8-test-name
+flake8-print
+flake8-eradicate

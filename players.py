@@ -1,12 +1,20 @@
 from board import Board, Turn
 
+from typing import Protocol
 import random
 import time
 
 
+class Player(Protocol):
+    def make_turn(self) -> Turn:
+        """dfvnlfksjnvlfksd"""
+    
+    def think() -> None:
+        time.sleep(random.randint(1, 5))
 
-class Player:
-    def __init__(self, board: Board):
+
+class User(Player):
+    def __init__(self, board: Board) -> None:
         self.weapon = board.user_weapon
     
     def make_turn(self, board: Board) -> Turn:
@@ -45,8 +53,8 @@ class Player:
         return turn
 
 
-class Rival:
-    def __init__(self, board: Board):
+class Rival(Player):
+    def __init__(self, board: Board) -> None:
         self.weapon = board.rival_weapon
     
     def make_turn(self, board: Board) -> Turn:
@@ -59,7 +67,7 @@ class Rival:
             col = random.choice(range(len(board.grid[row])))
             if board.grid[row][col] is None:
                 turn.col = col
-        time.sleep(2)
+        self.think()
         print('Rivals turn...')
-        time.sleep(2)
+        self.think()
         return turn
